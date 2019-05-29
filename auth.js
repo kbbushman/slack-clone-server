@@ -54,6 +54,9 @@ export const refreshTokens = async (token, refreshToken, models, SECRET, SECRET2
 
 
 export const tryLogin = async (email, password, models, SECRET, SECRET2) => {
+  if (!email && !password) return { ok: false, errors: [{ path: 'email', message: 'Email is required' }, { path: 'password', message: 'Password is required' }]}
+  if (!email) return { ok: false, errors: [{ path: 'email', message: 'Email is required' }]}
+  if (!password) return { ok: false, errors: [{ path: 'password', message: 'Password is required' }]}
   const user = await models.User.findOne({ where: { email }, raw: true });
   if (!user) {
     // User email not found
@@ -68,7 +71,7 @@ export const tryLogin = async (email, password, models, SECRET, SECRET2) => {
     // Password does not match
     return {
       ok: false,
-      errors: [{ path: 'email', message: 'Email or password is incorrect' }],
+      errors: [{ path: 'password', message: 'Email or password is incorrect' }],
     }
   }
 
