@@ -10,7 +10,8 @@ const createResolver = (resolver) => {
   return baseResolver;
 };
 
-export const authRequired = createResolver((parent, args, context) => {
+// authRequired
+export default createResolver((parent, args, context) => {
   if(!context.user || !context.user.id) {
     throw new Error('Not authenticated');
   }
