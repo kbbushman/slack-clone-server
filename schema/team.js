@@ -11,6 +11,7 @@ export default gql`
 
   type CreateTeamResponse {
     ok: Boolean!
+    team: Team!
     errors: [Error!]
   }
 
