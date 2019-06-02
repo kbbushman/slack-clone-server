@@ -9,7 +9,8 @@ export default {
   Mutation: {
     createTeam: authRequired.createResolver(async (parent, args, { models, user }) => {
       try {
-        await models.Team.create({ ...args, owner: user.id });
+        const team = await models.Team.create({ ...args, owner: user.id });
+        models.Channel.create({ name: 'general', public: true, teamId: team.id })
         return {
           ok: true,
         };
