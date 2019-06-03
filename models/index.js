@@ -13,6 +13,7 @@ const models = {
   Channel: sequelize.import('./Channel'),
   Message: sequelize.import('./Message'),
   Team: sequelize.import('./Team'),
+  Member: sequelize.import('./Member'),
 };
 
 // Create Model Associations
