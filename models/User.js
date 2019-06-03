@@ -48,7 +48,7 @@ export default (sequelize, DataTypes) => {
   User.associate = models => {
     // Many-to-Many Join Table
     User.belongsToMany(models.Team, {
-      through: 'member',
+      through: models.Member,
       foreignKey: {
         name: 'userId',
         field: 'user_id',
