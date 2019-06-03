@@ -9,7 +9,7 @@ export default (sequelize, DataTypes) => {
   Team.associate = models => {
     // Many-to-Many
     Team.belongsToMany(models.User, {
-      through: 'member',
+      through: models.Member,
       foreignKey: {
         name: 'teamId',
         field: 'team_id',
